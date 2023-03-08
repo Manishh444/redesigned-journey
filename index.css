@@ -1,0 +1,37 @@
+.foodCard{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* margin: 10px; */
+    
+    /* width: 150px; */
+}
+
+.card{
+    box-sizing: border-box;
+    border: 1px solid black;
+    width: 200px;
+    overflow:auto;
+    margin: 10px;
+}
+.card > img{
+    width: 100%;
+}
+.card > h4{
+    display: inline;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid black;
+}
+.header >ul {
+    display: flex;
+}
+
+li{
+    padding: 10px;
+    margin: 10px;
+}
