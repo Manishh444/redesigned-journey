@@ -1,9 +1,11 @@
 import React from 'react'
 
-const simmerUI = () => {
+const SimmerUI = () => {
   return (
-    <div>{Array.length(10)}</div>
-  )
+    <div>
+      <h1>Loading......</h1>
+    </div>
+  );
 }
 
-export default simmerUI
+export default SimmerUI

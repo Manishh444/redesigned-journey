@@ -7,8 +7,10 @@ import ReactDom from "react-dom/client";
 //   root.render(<Search />);
 //   return searchVal;
 // }
+
+
 const Search = () => {
-  const [toggle, setToggle] = useState(null);
+  const [searchText, setSearchText] = useState("");
 
   return (
     <div>
@@ -16,16 +18,12 @@ const Search = () => {
         type="type"
         value={toggle}
         onChange={(e) => {
-          setToggle(toggle);
+          setSearchText(e.target.value)
         }}
       ></input>
       <button
         onClick={() => {
-          if (!toggle) {
-            setToggle("false");
-          } else {
-            setToggle("true");
-          }
+          SearchRestaurant(searchText, Restaurants);
         }}
       >
         search{toggle}
