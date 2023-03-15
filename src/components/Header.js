@@ -8,13 +8,16 @@ const Header = () => {
         <img src="" alt="logo" />
         <ul>
           <li>
-            <Link>Home</Link>
+            <Link to={'/'}>Home</Link>
           </li>
           <li>
-            <Link to={'/about'}>About US</Link>
+            <Link to={"/about"}>About US</Link>
           </li>
           <li>Career</li>
           <li>cart</li>
+          <li>
+            <Link to={"/instamart"}>Instamart</Link>
+          </li>
         </ul>
       </div>
     </>

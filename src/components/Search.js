@@ -1,34 +1,37 @@
-import React, { useState } from "react";
-import ReactDom from "react-dom/client";
-// let searchVal;
-// function setSearch(x) {
-//   searchVal = x;
-//   const root = ReactDom.createRoot(document.getElementById("search"));
-//   root.render(<Search />);
-//   return searchVal;
-// }
+import React, { useState, useContext } from "react";
+import { GlobalInfo } from "./Body.js";
+import { SearchRestaurant } from "./Body.js";
 
-
+//  const SearchRestaurant = (searchText, restaurants) => {
+//    const ResultRest = restaurants.filter((x) => {
+//      return x?.data?.name.toLowerCase()?.includes(searchText.toLowerCase());
+//    });
+//    // console.log(ResultRest)
+//    return ResultRest;
+//  };
 const Search = () => {
   const [searchText, setSearchText] = useState("");
-
+  const allRestaurants = useContext(GlobalInfo)
+  console.log({allRestaurants})
   return (
-    <div>
-      <input
-        type="type"
-        value={toggle}
-        onChange={(e) => {
-          setSearchText(e.target.value)
-        }}
-      ></input>
-      <button
-        onClick={() => {
-          SearchRestaurant(searchText, Restaurants);
-        }}
-      >
-        search{toggle}
-      </button>
-    </div>
+     <div>
+        <input
+          type="type"
+          value={searchText}
+          onChange={(e) => {
+            setSearchText(e.target.value);
+          }}
+        ></input>
+        <button
+          onClick={() => {
+            const SerchResult = SearchRestaurant(searchText, allRestaurants);
+            console.log(SerchResult);
+            // setFilteredRestaurants(SerchResult);
+          }}
+        >
+          Search
+        </button>
+      </div> 
   );
 };
 

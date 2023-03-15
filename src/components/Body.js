@@ -1,16 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, createContext } from "react";
 import RestaurantCard from "./RestaurantCard";
+import Search from "./Search";
 // import Search from "./Search";
 // import SimmerUI from './simmerUI'
 
 
- const SearchRestaurant = (searchText, restaurants) => {
+ export const SearchRestaurant = (searchText, restaurants) => {
    const ResultRest = restaurants.filter((x) => {
      return x?.data?.name.toLowerCase()?.includes(searchText.toLowerCase());
    });
    // console.log(ResultRest)
    return ResultRest;
  };
+
+ export const GlobalInfo = createContext();
 
 const Body = () => {
   // let ResData = [];
@@ -20,7 +23,7 @@ const Body = () => {
    
   const [allRestaurants, setAllRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
-  const [searchText, setSearchText] = useState("");
+  // const [searchText, setSearchText] = useState("");
 
   const fetchData = async () => {
     let response = await fetch(url);
@@ -37,7 +40,9 @@ const Body = () => {
   }, []);
   return (
     <>
-      <div>
+      <GlobalInfo.Provider value={{ allRestaurants: allRestaurants }}>
+        <Search />
+        {/* <div>
         <input
           type="type"
           value={searchText}
@@ -54,12 +59,13 @@ const Body = () => {
         >
           Search
         </button>
-      </div>
-      <div className="foodCard">
-        {filteredRestaurants.map((x) => {
-          return <RestaurantCard {...x.data} key={x.data.id} />;
-        })}
-      </div>
+      </div> */}
+        <div className="foodCard">
+          {filteredRestaurants.map((x) => {
+            return <RestaurantCard {...x.data} key={x.data.id} />;
+          })}
+        </div>
+      </GlobalInfo.Provider>
     </>
   );
 };
