@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { GlobalInfo } from "./Body.js";
-import { SearchRestaurant } from "./Body.js";
+import { SearchRestaurant } from "../util/helper.js";
 
 //  const SearchRestaurant = (searchText, restaurants) => {
 //    const ResultRest = restaurants.filter((x) => {
@@ -12,7 +12,8 @@ import { SearchRestaurant } from "./Body.js";
 const Search = () => {
   const [searchText, setSearchText] = useState("");
   const allRestaurants = useContext(GlobalInfo)
-  console.log({allRestaurants})
+  // console.log({allRestaurants})
+  let allserchReastaurant = allRestaurants;
   return (
      <div>
         <input
@@ -24,9 +25,9 @@ const Search = () => {
         ></input>
         <button
           onClick={() => {
-            const SerchResult = SearchRestaurant(searchText, allRestaurants);
+            const SerchResult = SearchRestaurant(searchText, allserchReastaurant);
             console.log(SerchResult);
-            // setFilteredRestaurants(SerchResult);
+            setFilteredRestaurants(SerchResult);
           }}
         >
           Search

@@ -4,16 +4,7 @@ import Search from "./Search";
 // import Search from "./Search";
 // import SimmerUI from './simmerUI'
 
-
- export const SearchRestaurant = (searchText, restaurants) => {
-   const ResultRest = restaurants.filter((x) => {
-     return x?.data?.name.toLowerCase()?.includes(searchText.toLowerCase());
-   });
-   // console.log(ResultRest)
-   return ResultRest;
- };
-
- export const GlobalInfo = createContext();
+export const GlobalInfo = createContext();
 
 const Body = () => {
   // let ResData = [];
@@ -24,7 +15,6 @@ const Body = () => {
   const [allRestaurants, setAllRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   // const [searchText, setSearchText] = useState("");
-
   const fetchData = async () => {
     let response = await fetch(url);
     let data = await response.json();
@@ -42,6 +32,7 @@ const Body = () => {
     <>
       <GlobalInfo.Provider value={{ allRestaurants: allRestaurants }}>
         <Search />
+        {console.log("Hello this is below search comp")}
         {/* <div>
         <input
           type="type"
